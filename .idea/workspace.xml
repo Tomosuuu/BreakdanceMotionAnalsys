@@ -64,6 +64,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="365" y="23" width="880" height="777" key="CommitChangelistDialog2" timestamp="1577287971334">
+      <screen x="0" y="23" width="1245" height="777" />
+    </state>
+    <state x="365" y="23" width="880" height="777" key="CommitChangelistDialog2/0.23.1245.777@0.23.1245.777" timestamp="1577287971334" />
     <state x="438" y="312" key="Github.ShareDialog" timestamp="1577287719572">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
@@ -76,6 +80,10 @@
       <screen x="0" y="23" width="1245" height="777" />
     </state>
     <state x="124" y="50" key="SettingsEditor/0.23.1245.777@0.23.1245.777" timestamp="1577287930451" />
+    <state x="222" y="151" key="Vcs.Push.Dialog.v2" timestamp="1577287980324">
+      <screen x="0" y="23" width="1245" height="777" />
+    </state>
+    <state x="222" y="151" key="Vcs.Push.Dialog.v2/0.23.1245.777@0.23.1245.777" timestamp="1577287980324" />
   </component>
   <component name="hg4idea.settings">
     <option name="CHECK_INCOMING_OUTGOING" value="false" />
