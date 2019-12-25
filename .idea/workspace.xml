@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a29fbda-65ec-4b4e-8250-1cc7008842b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7a29fbda-65ec-4b4e-8250-1cc7008842b9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,14 +53,30 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1577287707283</updated>
-      <workItem from="1577287713588" duration="184000" />
+      <workItem from="1577287713588" duration="727000" />
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1577287971523</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577287971523</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="365" y="23" width="880" height="777" key="CommitChangelistDialog2" timestamp="1577287971334">
+      <screen x="0" y="23" width="1245" height="777" />
+    </state>
+    <state x="365" y="23" width="880" height="777" key="CommitChangelistDialog2/0.23.1245.777@0.23.1245.777" timestamp="1577287971334" />
     <state x="438" y="312" key="Github.ShareDialog" timestamp="1577287719572">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
@@ -76,6 +89,10 @@
       <screen x="0" y="23" width="1245" height="777" />
     </state>
     <state x="124" y="50" key="SettingsEditor/0.23.1245.777@0.23.1245.777" timestamp="1577287930451" />
+    <state x="222" y="151" key="Vcs.Push.Dialog.v2" timestamp="1577287980324">
+      <screen x="0" y="23" width="1245" height="777" />
+    </state>
+    <state x="222" y="151" key="Vcs.Push.Dialog.v2/0.23.1245.777@0.23.1245.777" timestamp="1577287980324" />
   </component>
   <component name="hg4idea.settings">
     <option name="CHECK_INCOMING_OUTGOING" value="false" />
