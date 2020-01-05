@@ -1,23 +1,22 @@
 import math
 import numpy as np
 
-
 class Calculation:
     FPS = 60
-    skip_fps = 60
-    center_point = np.array([0, 0])
-    moved_center_point = np.array([0, 0])
-    joint = np.array([0, 1])
-    moved_joint = np.array([1, 0])
+    # skip_fps = 60
+    # center_point = np.array([0, 0])
+    # moved_center_point = np.array([0, 0])
+    # joint = np.array([0, 1])
+    # moved_joint = np.array([1, 0])
 
-    def __init__(self):
-        time = self.skip_fps / self.FPS
-        trans_joint = self.Translation(self.center_point, self.moved_center_point, self.moved_joint)
-        angle = self.Angle(self.center_point, self.joint, trans_joint)
+    # def __init__(self):
+    #     self.AngularVelocity(self.center_point, self.moved_center_point, self.joint, self.moved_joint)
 
-        # 角速度
-        AngularVelocity = angle / time
-        print(AngularVelocity)
+    def AngularVelocity(self, center_point, moved_center_point, joint, moved_joint, skip):
+        time = skip / self.FPS
+        trans_joint = self.Translation(center_point, moved_center_point, moved_joint)
+        angle = self.Angle(center_point, joint, trans_joint)
+        return angle / time
 
     # 平行移動
     def Translation(self, center_point, moved_center_point, moved_joint):

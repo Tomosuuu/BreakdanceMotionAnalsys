@@ -4,8 +4,7 @@
     <list default="true" id="7a29fbda-65ec-4b4e-8250-1cc7008842b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KinematicDataCalculation.py" beforeDir="false" afterPath="$PROJECT_DIR$/KinematicDataCalculation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeDataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeDataSet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/joints.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeKinematicData.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeKinematicData.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
       <recent name="$PROJECT_DIR$/data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.KinematicDataCalculation">
+  <component name="RunManager" selected="Python.MakeKinematicData">
     <configuration name="KinematicDataCalculation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BreakdanceMotionAnalsys" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -91,6 +90,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MakeDataSet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MakeKinematicData" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="BreakdanceMotionAnalsys" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MakeKinematicData.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -150,10 +171,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="222" y="77" key="#Inspections" timestamp="1577671128069">
+    <state x="222" y="77" key="#Inspections" timestamp="1578222443211">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state x="222" y="77" key="#Inspections/0.23.1245.777@0.23.1245.777" timestamp="1577671128069" />
+    <state x="222" y="77" key="#Inspections/0.23.1245.777@0.23.1245.777" timestamp="1578222443211" />
     <state x="365" y="23" width="880" height="777" key="CommitChangelistDialog2" timestamp="1577287971334">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
@@ -170,22 +191,22 @@
       <screen x="0" y="23" width="1245" height="777" />
     </state>
     <state x="359" y="125" key="Github.UntrackedFilesDialog/0.23.1245.777@0.23.1245.777" timestamp="1577287723550" />
-    <state width="1203" height="197" key="GridCell.Tab.0.bottom" timestamp="1578218540071">
+    <state width="1203" height="197" key="GridCell.Tab.0.bottom" timestamp="1578225529422">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="197" key="GridCell.Tab.0.bottom/0.23.1245.777@0.23.1245.777" timestamp="1578218540071" />
-    <state width="1203" height="197" key="GridCell.Tab.0.center" timestamp="1578218540070">
+    <state width="1203" height="197" key="GridCell.Tab.0.bottom/0.23.1245.777@0.23.1245.777" timestamp="1578225529422" />
+    <state width="1203" height="197" key="GridCell.Tab.0.center" timestamp="1578225529421">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="197" key="GridCell.Tab.0.center/0.23.1245.777@0.23.1245.777" timestamp="1578218540070" />
-    <state width="1203" height="197" key="GridCell.Tab.0.left" timestamp="1578218540069">
+    <state width="1203" height="197" key="GridCell.Tab.0.center/0.23.1245.777@0.23.1245.777" timestamp="1578225529421" />
+    <state width="1203" height="197" key="GridCell.Tab.0.left" timestamp="1578225529420">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="197" key="GridCell.Tab.0.left/0.23.1245.777@0.23.1245.777" timestamp="1578218540069" />
-    <state width="1203" height="197" key="GridCell.Tab.0.right" timestamp="1578218540071">
+    <state width="1203" height="197" key="GridCell.Tab.0.left/0.23.1245.777@0.23.1245.777" timestamp="1578225529420" />
+    <state width="1203" height="197" key="GridCell.Tab.0.right" timestamp="1578225529421">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="197" key="GridCell.Tab.0.right/0.23.1245.777@0.23.1245.777" timestamp="1578218540071" />
+    <state width="1203" height="197" key="GridCell.Tab.0.right/0.23.1245.777@0.23.1245.777" timestamp="1578225529421" />
     <state width="1203" height="245" key="GridCell.Tab.1.bottom" timestamp="1578218250955">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
@@ -214,14 +235,15 @@
       <screen x="0" y="23" width="1245" height="777" />
     </state>
     <state x="299" y="244" key="com.intellij.ide.util.TipDialog/0.23.1245.777@0.23.1245.777" timestamp="1578114566803" />
-    <state x="281" y="168" width="837" height="550" key="find.popup" timestamp="1578213370738">
+    <state x="281" y="168" width="837" height="550" key="find.popup" timestamp="1578223410884">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state x="281" y="168" width="837" height="550" key="find.popup/0.23.1245.777@0.23.1245.777" timestamp="1578213370738" />
+    <state x="281" y="168" width="837" height="550" key="find.popup/0.23.1245.777@0.23.1245.777" timestamp="1578223410884" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeDataSet.coverage" NAME="MakeDataSet Coverage Results" MODIFIED="1578218409739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$KinematicDataCalculation.coverage" NAME="KinematicDataCalculation Coverage Results" MODIFIED="1578218540058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeKinematicData.coverage" NAME="MakeKinematicData Coverage Results" MODIFIED="1578225529409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$KinematicDataCalculation.coverage" NAME="KinematicDataCalculation Coverage Results" MODIFIED="1578220714940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="hg4idea.settings">
     <option name="CHECK_INCOMING_OUTGOING" value="false" />
