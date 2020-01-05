@@ -16,7 +16,7 @@ class Calculation:
         time = skip / self.FPS
         trans_joint = self.Translation(center_point, moved_center_point, moved_joint)
         angle = self.Angle(center_point, joint, trans_joint)
-        print(angle / time)
+        return angle / time
 
     # 平行移動
     def Translation(self, center_point, moved_center_point, moved_joint):
