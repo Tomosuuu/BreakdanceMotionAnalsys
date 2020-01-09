@@ -1,5 +1,4 @@
 import math
-import numpy as np
 
 class Calculation:
     FPS = 60
@@ -34,6 +33,14 @@ class Calculation:
         cos = naiseki / math.sqrt(a_vector_ex * b_vector_ex)
         angle = math.degrees(math.acos(cos))
         return angle
+
+    def Travel(self, joint, moved_joint):
+        dist = math.sqrt((moved_joint[0]-joint[0])**2 + (moved_joint[1]-joint[1])**2)
+        return dist
+
+    def Speed(self, dist, skip):
+        time = skip / self.FPS
+        return dist / time
 
 
 Calculation()

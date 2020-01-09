@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import os
 
 class DataSet:
@@ -30,14 +29,17 @@ class DataSet:
     def make_dataset(self):
         # path指定
         path = "./pose_csv"
-        files = os.listdir(path)
-        count = len(files)
+        dir_count = os.listdir(path)
+        count = len(dir_count)
         # print(count)
 
         # csvデータを統括して読み込み
         for i in range(count):
-            num = str(i).zfill(3)
-            pose = pd.read_csv('pose_csv/' + num + '.csv', header=None)
+            path2 = "./pose_csv/" + str(i).zfill(3)
+            csv_files = os.listdir(path2)
+            num = len(csv_files)
+            for j in range(num):
+                pose = pd.read_csv(path2 + '/' + str(j).zfill(3) + '.csv', header=None)
         # print(pose)
         return pose
 
