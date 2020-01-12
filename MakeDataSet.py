@@ -1,6 +1,11 @@
 import pandas as pd
-import numpy as np
 import os
+
+
+def file_count(path):
+    count = os.listdir(path)
+    return len(count)
+
 
 class DataSet:
     Joint = {'Nose': [],
@@ -21,28 +26,27 @@ class DataSet:
              'left_eye': [],
              'right_ear': [],
              'left_ear': []}
+    PATH = "./pose_csv"
+    Trans_data_path = "./Trans_Coordinate_Data"
 
     def __init__(self):
-        pose = self.make_dataset()
-        self.sepalate_data(pose)
-        self.linear_transformation()
+        os.makedirs(self.Trans_data_path, exist_ok=True)
+        self.make_dataset()
 
     def make_dataset(self):
-        # path指定
-        path = "./pose_csv"
-        files = os.listdir(path)
-        count = len(files)
-        # print(count)
+        count = file_count(self.PATH)
 
         # csvデータを統括して読み込み
-        for i in range(count):
-            num = str(i).zfill(3)
-            pose = pd.read_csv('pose_csv/' + num + '.csv', header=None)
-        # print(pose)
-        return pose
+        for dir_num in range(count):
+            dir_count = str(dir_num).zfill(3)
+            path_in = self.PATH + '/' + dir_count
+            num = file_count(path_in)
+            for file_num in range(num):
+                pose = pd.read_csv(path_in + '/' + str(file_num).zfill(3) + '.csv', header=None)
+            self.separate_data(pose, dir_count)
 
     # keypointごとに振り分ける
-    def sepalate_data(self, pose):
+    def separate_data(self, pose, dir_count):
         pose_datas = pose.values
         for i in range(len(pose_datas)):
             if i % 18 == 0:
@@ -82,17 +86,20 @@ class DataSet:
             elif i % 18 == 17:
                 self.Joint['left_ear'].append(pose_datas[i])
 
-    def linear_transformation(self):
-        feature = ['x','y','trust']
+        os.makedirs(self.Trans_data_path + "/" + dir_count, exist_ok=True)
+        self.linear_transformation(dir_count)
+
+    def linear_transformation(self, dir_count):
+        feature = ['x', 'y', 'trust']
         for key in self.Joint.keys():
             joint = pd.DataFrame(self.Joint[key], columns=feature)
             joint['x'] = joint['x'].where(joint['trust'] != 0.0)
             joint['y'] = joint['y'].where(joint['trust'] != 0.0)
             if joint.isnull().values.sum() != 0:
                 joint_in = joint.interpolate()
-                joint_in.to_csv("Joint_Coordinate/000/"+str(key)+".csv")
+                joint_in.to_csv(self.Trans_data_path + "/" + dir_count + "/" + str(key) + ".csv")
             else:
-                joint.to_csv("Joint_Coordinate/000/" + str(key) + ".csv")
+                joint.to_csv(self.Trans_data_path + "/" + dir_count + "/" + str(key) + ".csv")
 
 
 DataSet()
