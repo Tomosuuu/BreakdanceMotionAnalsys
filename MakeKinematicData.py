@@ -1,66 +1,76 @@
-from KinematicDataCalculation import Calculation
+from KinematicDataCalculation import Calculation, Translation, Angle, Travel
+from MakeDataSet import DataSet, file_count
 import pandas as pd
 import itertools
+import os
 
 
 class KinematicData(Calculation):
     skip = 10
-    Joint = ['Nose',
-             'Heart',
-             'right_shoulder',
-             'right_elbow',
-             'right_wrist',
-             'left_shoulder',
-             'left_elbow',
-             'left_wrist',
-             'right_hip',
-             'right_knee',
-             'right_ankle',
-             'left_hip',
-             'left_knee',
-             'left_ankle',
-             'right_eye',
-             'left_eye',
-             'right_ear',
-             'left_ear']
-    joint_perm = list(itertools.permutations(Joint, 2))
+    Keypoints = ['Nose',
+                 'Heart',
+                 'right_shoulder',
+                 'right_elbow',
+                 'right_wrist',
+                 'left_shoulder',
+                 'left_elbow',
+                 'left_wrist',
+                 'right_hip',
+                 'right_knee',
+                 'right_ankle',
+                 'left_hip',
+                 'left_knee',
+                 'left_ankle',
+                 'right_eye',
+                 'left_eye',
+                 'right_ear',
+                 'left_ear']
+    keypoints_perm = list(itertools.permutations(Keypoints, 2))
+    Center_Point = Keypoints[1]
+    Kinematic_data_path = "./Kinematic_Data"
 
     def __init__(self):
-        for a, b in self.joint_perm:
-            kinematic_data = pd.DataFrame()
-            kinematic_data['Angular_Velocity'] = self.calculate_angularvelocity(a, b)
-            kinematic_data['Angle'] = self.calculate_angle(a, b)
-            # kinematic_data['Speed'] = self.calculate_speed()
-            # kinematic_data['Travel'] = self.calculate_travel()
+        kumiawase = self.Combination(self.Center_Point)
+        os.makedirs(self.Kinematic_data_path, exist_ok=True)
+        count = file_count(DataSet.Trans_data_path)
+        for i in range(count):
+            data_path = self.Kinematic_data_path + "/" + str(i).zfill(3)
+            os.makedirs(data_path, exist_ok=True)
+            dir_count = str(i).zfill(3)
+            for a, b in kumiawase:
+                kinematic_data = pd.DataFrame()
+                kinematic_data['Angular_Velocity'] = self.calculate_angularvelocity(a, b, dir_count)
+                kinematic_data['Angle'] = self.calculate_angle(a, b, dir_count)
+                kinematic_data.to_csv(data_path + "/" + a + " - " + b + ".csv")
 
-            kinematic_data.to_csv("Kinematic_Data/two_joint/000/" + a + " - " + b + ".csv")
+    def Combination(self, center):
+        Combination = []
+        for i in self.Keypoints:
+            if i != center:
+                Combination.append([center,i])
+        return Combination
 
-        for joint in self.Joint:
-            one_joint_kinematic_data = pd.DataFrame()
-            one_joint_kinematic_data['Speed'] = self.calculate_speed(joint)
-            one_joint_kinematic_data['Travel'] = self.calculate_travel(joint)
-            one_joint_kinematic_data.to_csv("Kinematic_Data/one_joint/000/" + joint +".csv")
 
-    def one_joint(self, joint_a):
-        pose = pd.read_csv('Joint_Coordinate/000/' + str(joint_a) + '.csv', index_col=0)
+    def one_keypoint(self, keypoint_a, dir_count):
+        pose = pd.read_csv(DataSet.Trans_data_path + "/" + dir_count + "/" + str(keypoint_a) + '.csv', index_col=0)
         joi_a = pose.loc[pose.index % self.skip == 0, 'x':'y']
         A = joi_a.values
 
         return A
 
-    def select_joint(self, joint_a, joint_b):
-        pose = pd.read_csv('Joint_Coordinate/000/' + str(joint_a) + '.csv', index_col=0)
+    def select_keypoint(self, keypoint_a, keypoint_b, dir_count):
+        pose = pd.read_csv(DataSet.Trans_data_path + "/" + dir_count + "/" + str(keypoint_a) + '.csv', index_col=0)
         joi_a = pose.loc[pose.index % self.skip == 0, 'x':'y']
         A = joi_a.values
 
-        pose = pd.read_csv('Joint_Coordinate/000/' + str(joint_b) + '.csv', index_col=0)
+        pose = pd.read_csv(DataSet.Trans_data_path + "/" + dir_count + "/" + str(keypoint_b) + '.csv', index_col=0)
         joi_b = pose.loc[pose.index % self.skip == 0, 'x':'y']
         B = joi_b.values
 
         return A, B
 
-    def calculate_angularvelocity(self, joint_a, joint_b):
-        A, B = self.select_joint(joint_a, joint_b)
+    def calculate_angularvelocity(self, keypoint_a, keypoint_b, dir_count):
+        A, B = self.select_keypoint(keypoint_a, keypoint_b, dir_count)
 
         angular_velocity = []
         for i in range(1, len(A)):
@@ -69,32 +79,31 @@ class KinematicData(Calculation):
 
         return angular_velocity
 
-    def calculate_angle(self, joint_a, joint_b):
-        A, B = self.select_joint(joint_a, joint_b)
+    def calculate_angle(self, keypoint_a, keypoint_b, dir_count):
+        A, B = self.select_keypoint(keypoint_a, keypoint_b, dir_count)
 
         angle = []
         for i in range(1, len(A)):
-            trans_joint = Calculation.Translation(self, A[i - 1], A[i], B[i])
+            trans_keypoint = Translation(A[i - 1], A[i], B[i])
             angle.append(
-                Calculation.Angle(self, A[i - 1], B[i - 1], trans_joint))
+                Angle(A[i - 1], B[i - 1], trans_keypoint))
 
         return angle
 
-    def calculate_speed(self, joint):
-        A = self.one_joint(joint)
+    def calculate_speed(self, keypoint, dir_count):
+        A = self.one_keypoint(keypoint, dir_count)
         speed = []
         for i in range(1, len(A)):
-            dist = Calculation.Travel(self, A[i - 1], A[i])
+            dist = Travel(A[i - 1], A[i])
             speed.append(Calculation.Speed(self, dist, self.skip))
         return speed
 
-    def calculate_travel(self, joint):
-        A = self.one_joint(joint)
+    def calculate_travel(self, keypoint, dir_count):
+        A = self.one_keypoint(keypoint, dir_count)
         travel = []
         for i in range(1, len(A)):
-            travel.append(Calculation.Travel(self, A[i - 1], A[i]))
+            travel.append(Travel(A[i - 1], A[i]))
         return travel
-
 
 
 KinematicData()
