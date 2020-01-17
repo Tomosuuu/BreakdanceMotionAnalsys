@@ -102,5 +102,19 @@ class DataSet:
             else:
                 joint.to_csv(self.Trans_data_path + "/" + dir_count + "/" + str(key) + ".csv")
 
+    def out_csv_file(self):
+        kinematic_csv = "./Kinematic_data"
+        dir_count = file_count(kinematic_csv)
+        kinematic_dataset = pd.DataFrame()
+        for i in range(dir_count):
+            one_dataset = pd.DataFrame()
+            dir_path = kinematic_csv + '/' + str(i).zfill(3)
+            kine_count = file_count(dir_path)
+            for j in range(kine_count):
+                kinematic_data = pd.read_csv(dir_path + '/' + str(j).zfill(3) + '.csv')
+                pd.concat(one_dataset,kinematic_data.T)
+            pd.concat(kinematic_dataset,one_dataset)
+        print(kinematic_dataset)
+
 
 DataSet()
