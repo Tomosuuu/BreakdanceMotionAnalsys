@@ -26,7 +26,7 @@ class DataSet:
              'left_eye': [],
              'right_ear': [],
              'left_ear': []}
-    PATH = "./pose_csv"
+    PATH = "./coordinate_csv"
     Trans_data_path = "./Trans_Coordinate_Data"
 
     def __init__(self):
@@ -42,8 +42,9 @@ class DataSet:
             path_in = self.PATH + '/' + dir_count
             num = file_count(path_in)
             for file_num in range(num):
-                pose = pd.read_csv(path_in + '/' + str(file_num).zfill(3) + '.csv', header=None)
-            self.separate_data(pose, dir_count)
+                if os.path.isfile(path_in + '/' + str(file_num).zfill(3) + '.csv'):
+                    pose = pd.read_csv(path_in + '/' + str(file_num).zfill(3) + '.csv', header=None)
+                self.separate_data(pose, dir_count)
 
     # keypointごとに振り分ける
     def separate_data(self, pose, dir_count):
