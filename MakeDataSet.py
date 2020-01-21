@@ -1,120 +1,117 @@
-import pandas as pd
+import copy
 import os
+import pandas as pd
 
 
+# directory内のファイルをカウントする
 def file_count(path):
     count = os.listdir(path)
     return len(count)
 
+# 動作がスタートしているフレームを開始点とする
+def detect_start(dir_num):
+    start_frame = [215,150,75]
+    return start_frame[dir_num]
+
+# 振り分ける
+def separate_data(pose, COPIED_KEY_POINTS):
+    pose_data = pose.values
+    for i in range(len(pose_data)):
+        if i % 18 == 0:
+            COPIED_KEY_POINTS['Nose'].append(pose_data[i])
+        elif i % 18 == 1:
+            COPIED_KEY_POINTS['Heart'].append(pose_data[i])
+        elif i % 18 == 2:
+            COPIED_KEY_POINTS['right_shoulder'].append(pose_data[i])
+        elif i % 18 == 3:
+            COPIED_KEY_POINTS['right_elbow'].append(pose_data[i])
+        elif i % 18 == 4:
+            COPIED_KEY_POINTS['right_wrist'].append(pose_data[i])
+        elif i % 18 == 5:
+            COPIED_KEY_POINTS['left_shoulder'].append(pose_data[i])
+        elif i % 18 == 6:
+            COPIED_KEY_POINTS['left_elbow'].append(pose_data[i])
+        elif i % 18 == 7:
+            COPIED_KEY_POINTS['left_wrist'].append(pose_data[i])
+        elif i % 18 == 8:
+            COPIED_KEY_POINTS['right_hip'].append(pose_data[i])
+        elif i % 18 == 9:
+            COPIED_KEY_POINTS['right_knee'].append(pose_data[i])
+        elif i % 18 == 10:
+            COPIED_KEY_POINTS['right_ankle'].append(pose_data[i])
+        elif i % 18 == 11:
+            COPIED_KEY_POINTS['left_hip'].append(pose_data[i])
+        elif i % 18 == 12:
+            COPIED_KEY_POINTS['left_knee'].append(pose_data[i])
+        elif i % 18 == 13:
+            COPIED_KEY_POINTS['left_ankle'].append(pose_data[i])
+        elif i % 18 == 14:
+            COPIED_KEY_POINTS['left_eye'].append(pose_data[i])
+        elif i % 18 == 15:
+            COPIED_KEY_POINTS['right_eye'].append(pose_data[i])
+        elif i % 18 == 16:
+            COPIED_KEY_POINTS['right_ear'].append(pose_data[i])
+        elif i % 18 == 17:
+            COPIED_KEY_POINTS['left_ear'].append(pose_data[i])
+
 
 class DataSet:
-    Joint = {'Nose': [],
-             'Heart': [],
-             'right_shoulder': [],
-             'right_elbow': [],
-             'right_wrist': [],
-             'left_shoulder': [],
-             'left_elbow': [],
-             'left_wrist': [],
-             'right_hip': [],
-             'right_knee': [],
-             'right_ankle': [],
-             'left_hip': [],
-             'left_knee': [],
-             'left_ankle': [],
-             'right_eye': [],
-             'left_eye': [],
-             'right_ear': [],
-             'left_ear': []}
+    KEY_POINTS = {'Nose': [],
+                  'Heart': [],
+                  'right_shoulder': [],
+                  'right_elbow': [],
+                  'right_wrist': [],
+                  'left_shoulder': [],
+                  'left_elbow': [],
+                  'left_wrist': [],
+                  'right_hip': [],
+                  'right_knee': [],
+                  'right_ankle': [],
+                  'left_hip': [],
+                  'left_knee': [],
+                  'left_ankle': [],
+                  'right_eye': [],
+                  'left_eye': [],
+                  'right_ear': [],
+                  'left_ear': []}
     PATH = "./coordinate_csv"
-    Trans_data_path = "./Trans_Coordinate_Data"
+    TRANS_DATA_PATH = "./Trans_Coordinate_Data"
 
     def __init__(self):
-        os.makedirs(self.Trans_data_path, exist_ok=True)
         self.make_dataset()
 
+    # csvデータを統括して読み込み
     def make_dataset(self):
+        os.makedirs(self.TRANS_DATA_PATH, exist_ok=True)
         count = file_count(self.PATH)
 
-        # csvデータを統括して読み込み
         for dir_num in range(count):
             dir_count = str(dir_num).zfill(3)
             path_in = self.PATH + '/' + dir_count
-            num = file_count(path_in)
-            for file_num in range(num):
+            start = detect_start(dir_num)
+            end = file_count(path_in)
+            COPIED_KEY_POINTS = copy.deepcopy(self.KEY_POINTS)
+            pose = pd.DataFrame()
+            for file_num in range(start, end):
                 if os.path.isfile(path_in + '/' + str(file_num).zfill(3) + '.csv'):
-                    pose = pd.read_csv(path_in + '/' + str(file_num).zfill(3) + '.csv', header=None)
-                self.separate_data(pose, dir_count)
+                    POSE = pd.read_csv(path_in + '/' + str(file_num).zfill(3) + '.csv', header=None)
+                    pose = pd.concat([pose, POSE])
+            separate_data(pose, COPIED_KEY_POINTS)
+            os.makedirs(self.TRANS_DATA_PATH + "/" + dir_count, exist_ok=True)
+            self.linear_transformation(dir_count, COPIED_KEY_POINTS)
 
-    # keypointごとに振り分ける
-    def separate_data(self, pose, dir_count):
-        pose_datas = pose.values
-        for i in range(len(pose_datas)):
-            if i % 18 == 0:
-                self.Joint['Nose'].append(pose_datas[i])
-            elif i % 18 == 1:
-                self.Joint['Heart'].append(pose_datas[i])
-            elif i % 18 == 2:
-                self.Joint['right_shoulder'].append(pose_datas[i])
-            elif i % 18 == 3:
-                self.Joint['right_elbow'].append(pose_datas[i])
-            elif i % 18 == 4:
-                self.Joint['right_wrist'].append(pose_datas[i])
-            elif i % 18 == 5:
-                self.Joint['left_shoulder'].append(pose_datas[i])
-            elif i % 18 == 6:
-                self.Joint['left_elbow'].append(pose_datas[i])
-            elif i % 18 == 7:
-                self.Joint['left_wrist'].append(pose_datas[i])
-            elif i % 18 == 8:
-                self.Joint['right_hip'].append(pose_datas[i])
-            elif i % 18 == 9:
-                self.Joint['right_knee'].append(pose_datas[i])
-            elif i % 18 == 10:
-                self.Joint['right_ankle'].append(pose_datas[i])
-            elif i % 18 == 11:
-                self.Joint['left_hip'].append(pose_datas[i])
-            elif i % 18 == 12:
-                self.Joint['left_knee'].append(pose_datas[i])
-            elif i % 18 == 13:
-                self.Joint['left_ankle'].append(pose_datas[i])
-            elif i % 18 == 14:
-                self.Joint['left_eye'].append(pose_datas[i])
-            elif i % 18 == 15:
-                self.Joint['right_eye'].append(pose_datas[i])
-            elif i % 18 == 16:
-                self.Joint['right_ear'].append(pose_datas[i])
-            elif i % 18 == 17:
-                self.Joint['left_ear'].append(pose_datas[i])
-
-        os.makedirs(self.Trans_data_path + "/" + dir_count, exist_ok=True)
-        self.linear_transformation(dir_count)
-
-    def linear_transformation(self, dir_count):
+    # 線形変換する
+    def linear_transformation(self, dir_count, COPIED_KEY_POINTS):
         feature = ['x', 'y', 'trust']
-        for key in self.Joint.keys():
-            joint = pd.DataFrame(self.Joint[key], columns=feature)
-            joint['x'] = joint['x'].where(joint['trust'] != 0.0)
-            joint['y'] = joint['y'].where(joint['trust'] != 0.0)
-            if joint.isnull().values.sum() != 0:
-                joint_in = joint.interpolate()
-                joint_in.to_csv(self.Trans_data_path + "/" + dir_count + "/" + str(key) + ".csv")
+        for key in COPIED_KEY_POINTS.keys():
+            key_points = pd.DataFrame(COPIED_KEY_POINTS[key], columns=feature)
+            key_points['x'] = key_points['x'].where(key_points['trust'] != 0.0)
+            key_points['y'] = key_points['y'].where(key_points['trust'] != 0.0)
+            if key_points.isnull().values.sum() != 0:
+                joint_in = key_points.interpolate()
+                joint_in.to_csv(self.TRANS_DATA_PATH + "/" + dir_count + "/" + str(key) + ".csv")
             else:
-                joint.to_csv(self.Trans_data_path + "/" + dir_count + "/" + str(key) + ".csv")
-
-    def out_csv_file(self):
-        kinematic_csv = "./Kinematic_data"
-        dir_count = file_count(kinematic_csv)
-        kinematic_dataset = pd.DataFrame()
-        for i in range(dir_count):
-            one_dataset = pd.DataFrame()
-            dir_path = kinematic_csv + '/' + str(i).zfill(3)
-            kine_count = file_count(dir_path)
-            for j in range(kine_count):
-                kinematic_data = pd.read_csv(dir_path + '/' + str(j).zfill(3) + '.csv')
-                pd.concat(one_dataset,kinematic_data.T)
-            pd.concat(kinematic_dataset,one_dataset)
-        print(kinematic_dataset)
+                key_points.to_csv(self.TRANS_DATA_PATH + "/" + dir_count + "/" + str(key) + ".csv")
 
 
 DataSet()
