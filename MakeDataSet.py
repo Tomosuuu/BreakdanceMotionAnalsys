@@ -10,7 +10,8 @@ def file_count(path):
 
 # 動作がスタートしているフレームを開始点とする
 def detect_start(dir_num):
-    start_frame = [215,150,75]
+    start = pd.read_csv("./Evaluate_Flare/start-start_frame.csv", usecols=["start"])
+    start_frame = start.T.values[0]
     return start_frame[dir_num]
 
 # 振り分ける
