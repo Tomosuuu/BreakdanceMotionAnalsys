@@ -1,6 +1,8 @@
 import copy
 import os
 import pandas as pd
+import glob
+import numpy as np
 
 
 # directory内のファイルをカウントする
@@ -77,9 +79,13 @@ class DataSet:
                   'left_ear': []}
     PATH = "./coordinate_csv"
     TRANS_DATA_PATH = "./Trans_Coordinate_Data"
+    DATA_SIZE = []
+    MOVE_MEAN_DATA_PATH = "./Move_Mean_Data"
 
     def __init__(self):
         self.make_dataset()
+        self.data_counter()
+        self.move_mean()
 
     # csvデータを統括して読み込み
     def make_dataset(self):
@@ -113,6 +119,37 @@ class DataSet:
                 joint_in.to_csv(self.TRANS_DATA_PATH + "/" + dir_count + "/" + str(key) + ".csv")
             else:
                 key_points.to_csv(self.TRANS_DATA_PATH + "/" + dir_count + "/" + str(key) + ".csv")
+
+    def data_counter(self):
+        count = file_count(self.TRANS_DATA_PATH)
+        for i in range(count):
+            path_list = glob.glob(self.TRANS_DATA_PATH + "/" + str(i).zfill(3) + "/*")
+            for j in path_list:
+                trans = pd.read_csv(j, usecols=["x","y"])
+                t = trans.values
+            self.DATA_SIZE.append(len(t))
+
+    def move_mean(self):
+        os.makedirs(self.MOVE_MEAN_DATA_PATH, exist_ok=True)
+        count = file_count(self.TRANS_DATA_PATH)
+        for i in range(count):
+            path_list = glob.glob(self.TRANS_DATA_PATH + "/" + str(i).zfill(3) + "/*")
+            os.makedirs(self.MOVE_MEAN_DATA_PATH + "/" + str(i).zfill(3), exist_ok=True)
+            for j in path_list:
+                move_means_data = pd.DataFrame()
+                trans = pd.read_csv(j, usecols=["x","y"])
+                t = trans.T.values
+                n = self.DATA_SIZE[i] - min(self.DATA_SIZE)
+                if n != 0:
+                    n += 1
+                    x = np.convolve(t[0], np.ones(n)/float(n), 'valid')
+                    y = np.convolve(t[1], np.ones(n)/float(n), 'valid')
+                    move_means_data['x'] = x
+                    move_means_data['y'] = y
+                else:
+                    move_means_data['x'] = t[0]
+                    move_means_data['y'] = t[1]
+                move_means_data.to_csv(self.MOVE_MEAN_DATA_PATH + j[len(self.TRANS_DATA_PATH):])
 
 
 DataSet()

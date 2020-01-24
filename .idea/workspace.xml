@@ -4,6 +4,7 @@
     <list default="true" id="7a29fbda-65ec-4b4e-8250-1cc7008842b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MakeDataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeDataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeKinematicData.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeKinematicData.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,25 +213,25 @@
       <screen x="0" y="23" width="1245" height="777" />
     </state>
     <state x="359" y="125" key="Github.UntrackedFilesDialog/0.23.1245.777@0.23.1245.777" timestamp="1577287723550" />
-    <state width="1203" height="186" key="GridCell.Tab.0.bottom" timestamp="1579590890078">
+    <state width="1203" height="186" key="GridCell.Tab.0.bottom" timestamp="1579831094663">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="186" key="GridCell.Tab.0.bottom/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579590890078" />
+    <state width="1203" height="186" key="GridCell.Tab.0.bottom/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579831094663" />
     <state width="1203" height="245" key="GridCell.Tab.0.bottom/0.23.1245.777@0.23.1245.777" timestamp="1579437025843" />
-    <state width="1203" height="186" key="GridCell.Tab.0.center" timestamp="1579590890077">
+    <state width="1203" height="186" key="GridCell.Tab.0.center" timestamp="1579831094662">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="186" key="GridCell.Tab.0.center/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579590890077" />
+    <state width="1203" height="186" key="GridCell.Tab.0.center/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579831094662" />
     <state width="1203" height="245" key="GridCell.Tab.0.center/0.23.1245.777@0.23.1245.777" timestamp="1579437025842" />
-    <state width="1203" height="186" key="GridCell.Tab.0.left" timestamp="1579590890076">
+    <state width="1203" height="186" key="GridCell.Tab.0.left" timestamp="1579831094661">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="186" key="GridCell.Tab.0.left/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579590890076" />
+    <state width="1203" height="186" key="GridCell.Tab.0.left/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579831094661" />
     <state width="1203" height="245" key="GridCell.Tab.0.left/0.23.1245.777@0.23.1245.777" timestamp="1579437025842" />
-    <state width="1203" height="186" key="GridCell.Tab.0.right" timestamp="1579590890077">
+    <state width="1203" height="186" key="GridCell.Tab.0.right" timestamp="1579831094663">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="186" key="GridCell.Tab.0.right/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579590890077" />
+    <state width="1203" height="186" key="GridCell.Tab.0.right/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579831094663" />
     <state width="1203" height="245" key="GridCell.Tab.0.right/0.23.1245.777@0.23.1245.777" timestamp="1579437025843" />
     <state width="1203" height="245" key="GridCell.Tab.1.bottom" timestamp="1579437025844">
       <screen x="0" y="23" width="1245" height="777" />
@@ -271,8 +272,8 @@
     <state x="384" y="49" key="refactoring.ChangeSignatureDialog/0.23.1245.777@0.23.1245.777" timestamp="1578811707045" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeDataSet.coverage" NAME="MakeDataSet Coverage Results" MODIFIED="1579588423305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeKinematicData.coverage" NAME="MakeKinematicData Coverage Results" MODIFIED="1579590890064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeDataSet.coverage" NAME="MakeDataSet Coverage Results" MODIFIED="1579830995945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeKinematicData.coverage" NAME="MakeKinematicData Coverage Results" MODIFIED="1579831094650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$KinematicDataCalculation.coverage" NAME="KinematicDataCalculation Coverage Results" MODIFIED="1578220714940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="hg4idea.settings">

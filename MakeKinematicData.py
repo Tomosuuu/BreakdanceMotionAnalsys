@@ -33,7 +33,7 @@ class KinematicData(Calculation):
     def __init__(self):
         kumiawase = self.Combination(self.CENTER_POINT)
         os.makedirs(self.KINEMATIC_DATA_PATH, exist_ok=True)
-        count = file_count(DataSet.TRANS_DATA_PATH)
+        count = file_count(DataSet.MOVE_MEAN_DATA_PATH)
         for i in range(count):
             data_path = self.KINEMATIC_DATA_PATH + "/" + str(i).zfill(3)
             os.makedirs(data_path, exist_ok=True)
@@ -55,7 +55,7 @@ class KinematicData(Calculation):
 
     # 未使用
     def one_key_point(self, keypoint_a, dir_count):
-        pose = pd.read_csv(DataSet.TRANS_DATA_PATH + "/" + dir_count + "/" + str(keypoint_a) + '.csv', index_col=0)
+        pose = pd.read_csv(DataSet.MOVE_MEAN_DATA_PATH + "/" + dir_count + "/" + str(keypoint_a) + '.csv', index_col=0)
         joi_a = pose.loc[pose.index % self.SKIP == 0, 'x':'y']
         A = joi_a.values
 
@@ -63,11 +63,11 @@ class KinematicData(Calculation):
 
     # 2つのkey_pointを選択する
     def select_key_points(self, keypoint_a, keypoint_b, dir_count):
-        pose = pd.read_csv(DataSet.TRANS_DATA_PATH + "/" + dir_count + "/" + str(keypoint_a) + '.csv', index_col=0)
+        pose = pd.read_csv(DataSet.MOVE_MEAN_DATA_PATH + "/" + dir_count + "/" + str(keypoint_a) + '.csv', index_col=0)
         joi_a = pose.loc[pose.index % self.SKIP == 0, 'x':'y']
         A = joi_a.values
 
-        pose = pd.read_csv(DataSet.TRANS_DATA_PATH + "/" + dir_count + "/" + str(keypoint_b) + '.csv', index_col=0)
+        pose = pd.read_csv(DataSet.MOVE_MEAN_DATA_PATH + "/" + dir_count + "/" + str(keypoint_b) + '.csv', index_col=0)
         joi_b = pose.loc[pose.index % self.SKIP == 0, 'x':'y']
         B = joi_b.values
 
