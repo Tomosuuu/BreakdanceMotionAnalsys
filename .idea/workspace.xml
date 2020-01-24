@@ -3,11 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="7a29fbda-65ec-4b4e-8250-1cc7008842b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/MakeDataSet.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeDataSet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakeKinematicData.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakeKinematicData.py" afterDir="false" />
+>>>>>>> feature/make_dataset
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -178,7 +197,13 @@
       <workItem from="1578114559333" duration="8525000" />
       <workItem from="1578533620496" duration="6632000" />
       <workItem from="1578544739415" duration="1852000" />
+<<<<<<< HEAD
       <workItem from="1579152295212" duration="1460000" />
+=======
+      <workItem from="1579225461378" duration="1582000" />
+      <workItem from="1579229332692" duration="1600000" />
+      <workItem from="1579582307752" duration="6662000" />
+>>>>>>> feature/make_dataset
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1577287971523</created>
@@ -218,6 +243,7 @@
       <screen x="0" y="23" width="1245" height="777" />
     </state>
     <state x="359" y="125" key="Github.UntrackedFilesDialog/0.23.1245.777@0.23.1245.777" timestamp="1577287723550" />
+<<<<<<< HEAD
     <state width="1203" height="116" key="GridCell.Tab.0.bottom" timestamp="1579154102878">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
@@ -239,22 +265,50 @@
     <state width="1203" height="116" key="GridCell.Tab.0.right/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579154102877" />
     <state width="1203" height="197" key="GridCell.Tab.0.right/0.23.1245.777@0.23.1245.777" timestamp="1578816108317" />
     <state width="1203" height="245" key="GridCell.Tab.1.bottom" timestamp="1578808172979">
+=======
+    <state width="1203" height="186" key="GridCell.Tab.0.bottom" timestamp="1579831094663">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="245" key="GridCell.Tab.1.bottom/0.23.1245.777@0.23.1245.777" timestamp="1578808172979" />
-    <state width="1203" height="245" key="GridCell.Tab.1.center" timestamp="1578808172979">
+    <state width="1203" height="186" key="GridCell.Tab.0.bottom/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579831094663" />
+    <state width="1203" height="245" key="GridCell.Tab.0.bottom/0.23.1245.777@0.23.1245.777" timestamp="1579437025843" />
+    <state width="1203" height="186" key="GridCell.Tab.0.center" timestamp="1579831094662">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="245" key="GridCell.Tab.1.center/0.23.1245.777@0.23.1245.777" timestamp="1578808172979" />
-    <state width="1203" height="245" key="GridCell.Tab.1.left" timestamp="1578808172978">
+    <state width="1203" height="186" key="GridCell.Tab.0.center/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579831094662" />
+    <state width="1203" height="245" key="GridCell.Tab.0.center/0.23.1245.777@0.23.1245.777" timestamp="1579437025842" />
+    <state width="1203" height="186" key="GridCell.Tab.0.left" timestamp="1579831094661">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state width="1203" height="245" key="GridCell.Tab.1.left/0.23.1245.777@0.23.1245.777" timestamp="1578808172978" />
-    <state width="1203" height="245" key="GridCell.Tab.1.right" timestamp="1578808172979">
+    <state width="1203" height="186" key="GridCell.Tab.0.left/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579831094661" />
+    <state width="1203" height="245" key="GridCell.Tab.0.left/0.23.1245.777@0.23.1245.777" timestamp="1579437025842" />
+    <state width="1203" height="186" key="GridCell.Tab.0.right" timestamp="1579831094663">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
+    <state width="1203" height="186" key="GridCell.Tab.0.right/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579831094663" />
+    <state width="1203" height="245" key="GridCell.Tab.0.right/0.23.1245.777@0.23.1245.777" timestamp="1579437025843" />
+    <state width="1203" height="245" key="GridCell.Tab.1.bottom" timestamp="1579437025844">
+>>>>>>> feature/make_dataset
+      <screen x="0" y="23" width="1245" height="777" />
+    </state>
+    <state width="1203" height="245" key="GridCell.Tab.1.bottom/0.23.1245.777@0.23.1245.777" timestamp="1579437025844" />
+    <state width="1203" height="245" key="GridCell.Tab.1.center" timestamp="1579437025844">
+      <screen x="0" y="23" width="1245" height="777" />
+    </state>
+    <state width="1203" height="245" key="GridCell.Tab.1.center/0.23.1245.777@0.23.1245.777" timestamp="1579437025844" />
+    <state width="1203" height="245" key="GridCell.Tab.1.left" timestamp="1579437025843">
+      <screen x="0" y="23" width="1245" height="777" />
+    </state>
+    <state width="1203" height="245" key="GridCell.Tab.1.left/0.23.1245.777@0.23.1245.777" timestamp="1579437025843" />
+    <state width="1203" height="245" key="GridCell.Tab.1.right" timestamp="1579437025844">
+      <screen x="0" y="23" width="1245" height="777" />
+    </state>
+<<<<<<< HEAD
     <state width="1203" height="245" key="GridCell.Tab.1.right/0.23.1245.777@0.23.1245.777" timestamp="1578808172979" />
     <state x="124" y="50" key="SettingsEditor" timestamp="1579153169903">
+=======
+    <state width="1203" height="245" key="GridCell.Tab.1.right/0.23.1245.777@0.23.1245.777" timestamp="1579437025844" />
+    <state x="124" y="50" key="SettingsEditor" timestamp="1577669481831">
+>>>>>>> feature/make_dataset
       <screen x="0" y="23" width="1245" height="777" />
     </state>
     <state x="124" y="50" key="SettingsEditor/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579153169903" />
@@ -263,13 +317,14 @@
       <screen x="0" y="23" width="1245" height="777" />
     </state>
     <state x="222" y="151" key="Vcs.Push.Dialog.v2/0.23.1245.777@0.23.1245.777" timestamp="1577287980324" />
-    <state x="299" y="244" key="com.intellij.ide.util.TipDialog" timestamp="1578544739691">
+    <state x="299" y="244" key="com.intellij.ide.util.TipDialog" timestamp="1579582320201">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
-    <state x="299" y="244" key="com.intellij.ide.util.TipDialog/0.23.1245.777@0.23.1245.777" timestamp="1578544739691" />
-    <state x="281" y="168" width="837" height="550" key="find.popup" timestamp="1578223410884">
+    <state x="299" y="244" key="com.intellij.ide.util.TipDialog/0.23.1245.777@0.23.1245.777" timestamp="1579582320201" />
+    <state x="281" y="168" width="837" height="550" key="find.popup" timestamp="1579587756366">
       <screen x="0" y="23" width="1245" height="777" />
     </state>
+    <state x="281" y="168" width="837" height="550" key="find.popup/0.23.1245.777/-1920.-751.1920.1057@0.23.1245.777" timestamp="1579587756366" />
     <state x="281" y="168" width="837" height="550" key="find.popup/0.23.1245.777@0.23.1245.777" timestamp="1578223410884" />
     <state x="384" y="49" key="refactoring.ChangeSignatureDialog" timestamp="1578811707045">
       <screen x="0" y="23" width="1245" height="777" />
@@ -277,8 +332,13 @@
     <state x="384" y="49" key="refactoring.ChangeSignatureDialog/0.23.1245.777@0.23.1245.777" timestamp="1578811707045" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeDataSet.coverage" NAME="MakeDataSet Coverage Results" MODIFIED="1578812770848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeKinematicData.coverage" NAME="MakeKinematicData Coverage Results" MODIFIED="1579153121427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+=======
+    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeDataSet.coverage" NAME="MakeDataSet Coverage Results" MODIFIED="1579830995945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$MakeKinematicData.coverage" NAME="MakeKinematicData Coverage Results" MODIFIED="1579831094650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> feature/make_dataset
     <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$KinematicDataCalculation.coverage" NAME="KinematicDataCalculation Coverage Results" MODIFIED="1578220714940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BreakdanceMotionAnalsys$cnn.coverage" NAME="cnn Coverage Results" MODIFIED="1579154102860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
