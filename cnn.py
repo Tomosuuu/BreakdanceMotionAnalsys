@@ -1,8 +1,6 @@
 import keras
 import pandas as pd
 import numpy as np
-from keras.datasets import boston_housing
-from keras.optimizers import RMSprop
 from sklearn.model_selection import train_test_split
 
 d = pd.read_csv("kinematic_dataset.csv", index_col=0)
@@ -12,8 +10,6 @@ t = pd.read_csv("Evaluate_Flare/evaluate-evaluate.csv", index_col=0)
 target = t.T.values[0]
 
 X_train, X_test, y_train, y_test = train_test_split(data, target, test_size=0.1)
-
-# (X_train, y_train), (X_test, y_test) = boston_housing.load_data()
 
 # トレーニングデータの正規化
 X_train_mean = X_train.mean(axis=0)
@@ -33,17 +29,13 @@ X_test -= X_train_mean
 X_test /= X_train_std
 # y_test -= y_train_mean
 # y_test /= y_train_std
-#
-from keras.models import Sequential
-from keras.layers import Dense
 
-model = Sequential()
+
 model = keras.Sequential([
-    keras.layers.Dense(1024, input_dim=850, activation='sigmoid'),
-    keras.layers.Dense(512, activation='sigmoid'),
-    keras.layers.Dense(256, activation='sigmoid'),
-    keras.layers.Dense(128, activation='sigmoid'),
-    keras.layers.Dense(64, activation='sigmoid'),
+    keras.layers.Dense(425, input_dim=425, activation='relu'),
+    # keras.layers.Dense(426, activation='relu'),
+    # keras.layers.Dense(426, activation='relu'),
+    # keras.layers.Dense(256, activation='relu'),
     keras.layers.Dense(6, activation='softmax')
 ])
 
@@ -51,9 +43,13 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(X_train, y_train, epochs=500)
+history = model.fit(X_train, y_train, epochs=200)
 
-expect = model.predict(X_test, batch_size=5)
+test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
+
+print('\nTest accuracy:', test_acc)
+
+expect = model.predict(X_test)
 print(y_test)
 # print(expect)
-print(np.argmax(expect[0]),np.argmax(expect[1]),np.argmax(expect[2]))
+print(np.argmax(expect[0]),np.argmax(expect[1]),np.argmax(expect[2]),np.argmax(expect[3]),np.argmax(expect[4]),np.argmax(expect[5]),np.argmax(expect[6]))
