@@ -2,6 +2,7 @@ import keras
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 d = pd.read_csv("kinematic_dataset.csv", index_col=0)
 data = d.values
@@ -32,18 +33,26 @@ X_test /= X_train_std
 
 
 model = keras.Sequential([
-    keras.layers.Dense(425, input_dim=425, activation='relu'),
-    # keras.layers.Dense(426, activation='relu'),
-    # keras.layers.Dense(426, activation='relu'),
-    # keras.layers.Dense(256, activation='relu'),
+    keras.layers.Dense(216, activation='relu', input_shape=(204,)),
+    keras.layers.Dropout(0.5),
+    keras.layers.Dense(216, activation='relu'),
+    keras.layers.Dropout(0.5),
+    keras.layers.Dense(50, activation='relu'),
+    # keras.layers.Dense(600, activation='relu'),
+    # keras.layers.Dense(300, activation='relu'),
     keras.layers.Dense(6, activation='softmax')
 ])
+
+model.summary()
 
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-history = model.fit(X_train, y_train, epochs=200)
+history = model.fit(X_train, y_train,
+                    epochs=300,
+                    batch_size=32,
+                    validation_data=(X_test, y_test))
 
 test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
 
@@ -53,3 +62,21 @@ expect = model.predict(X_test)
 print(y_test)
 # print(expect)
 print(np.argmax(expect[0]),np.argmax(expect[1]),np.argmax(expect[2]),np.argmax(expect[3]),np.argmax(expect[4]),np.argmax(expect[5]),np.argmax(expect[6]))
+
+# Plot training & validation accuracy values
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Model accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Test'], loc='upper left')
+plt.show()
+
+# Plot training & validation loss values
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Model loss')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Test'], loc='upper left')
+plt.show()
