@@ -152,4 +152,4 @@ class DataSet:
                 move_means_data.to_csv(self.MOVE_MEAN_DATA_PATH + j[len(self.TRANS_DATA_PATH):])
 
 
-DataSet()
+# DataSet()

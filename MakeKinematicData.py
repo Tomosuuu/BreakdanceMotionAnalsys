@@ -30,7 +30,8 @@ class KinematicData(Calculation):
     CENTER_POINT = KEY_POINTS_NAME[1]
     KINEMATIC_DATA_PATH = "./Kinematic_Data"
 
-    def __init__(self):
+    def __init__(self, skip=10):
+        self.SKIP = skip
         kumiawase = self.Combination(self.CENTER_POINT)
         os.makedirs(self.KINEMATIC_DATA_PATH, exist_ok=True)
         count = file_count(DataSet.MOVE_MEAN_DATA_PATH)
@@ -130,4 +131,4 @@ class KinematicData(Calculation):
         kine.to_csv("./kinematic_dataset.csv")
 
 
-KinematicData()
+# KinematicData()
