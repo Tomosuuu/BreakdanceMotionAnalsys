@@ -8,51 +8,36 @@ from MakeKinematicData import KinematicData
 import os
 from sklearn.metrics import mean_squared_error
 
+plt.rcParams["font.size"] = 30
 
-def mean_squared_error(y, t):
-    return 0.5 * np.sum((y - t) ** 2)
-
-
-class logistic():
+class Logistic:
     def __init__(self):
         KinematicData()
         os.makedirs("./Graph", exist_ok=True)
-        s = []
-        r = []
-        count = 10
-        score, rmse, ke = self.logisticreg()
-        key = []
-        j = 0
-        for i in range(len(ke[0])):
-            key.append(ke[0][i])
-            if i % 24 == 0 and i != 0:
-                plt.figure(figsize=(20, 10), dpi=200)
-                plt.bar(range(len(key)),key)
-                plt.savefig("./Graph/" + str(j) + ".png")
-                j += 1
-                key = []
-        # for i in range(count):
-        #     score, rmse, ke = self.logisticreg()
-        #     s.append(score)
-        #     r.append(rmse)
-        #     print(len(ke[0]))
-        #     plt.figure(figsize=(20, 10), dpi=200)
-        #     plt.bar(range(len(ke[0])),ke[0])
-        #     plt.savefig("./Graph/" + str(i) + ".png")
+        score_list = []
+        rmse_list = []
+        count = 100
+        for i in range(count):
+            score, rmse = self.logisticreg()
+            score_list.append(score)
+            rmse_list.append(rmse)
+
         # plt.figure(figsize=(20, 10), dpi=200)
-        # plt.xlabel('count', fontsize=28)
-        # plt.ylabel('score', fontsize=28)
+        # plt.xlabel('count')
+        # plt.ylabel('score')
         # plt.ylim(0.0,1.0)
         # plt.legend()
-        # plt.plot(range(1,count+1), s, linewidth=4, color="orange")
+        # plt.plot(range(1,count+1), score_list, linewidth=4, color="orange")
         # plt.savefig("./Graph/" + "score" + ".png")
-        #
-        # plt.figure(figsize=(20, 10), dpi=200)
-        # plt.xlabel('count', fontsize=28)
-        # plt.ylabel('rmse', fontsize=28)
-        # plt.legend()
-        # plt.plot(range(1,count+1), r, linewidth=4, color="black")
-        # plt.savefig("./Graph/" + "rmse" + ".png")
+
+        plt.figure(figsize=(20, 10), dpi=200)
+        plt.ylabel('count')
+        plt.xlabel('RMSE')
+        plt.legend()
+        plt.hist(rmse_list)
+        plt.savefig("./Graph/" + "rmse" + ".png")
+        print(rmse_list)
+        print(score_list)
 
         # print("MAX:{}".format(max(s)))
         # print("MIN:{}".format(min(s)))
@@ -73,7 +58,7 @@ class logistic():
         stdsc = StandardScaler()
         X_train = stdsc.fit_transform(X_train)
         X_test = stdsc.transform(X_test)
-        print(X_train)
+        # print(X_train)
 
         clf = LogisticRegression()
         clf.fit(X_train, y_train)
@@ -83,23 +68,23 @@ class logistic():
         # print(y_train)
         #
         # print("----")
-        # print(y_test)
-        # print(clf.predict(X_test))
+        print(y_test)
+        print(clf.predict(X_test))
         #
         # print("----")
         # print("score:",clf.score(X_test, y_test))
-        regression_coefficient = clf.coef_
-        segment = clf.intercept_
-        print("回帰係数:{}".format(regression_coefficient))
-        print("切片:{}".format(segment))
+        # regression_coefficient = clf.coef_
+        # segment = clf.intercept_
+        # print("回帰係数:{}".format(regression_coefficient))
+        # print("切片:{}".format(segment))
         print("決定係数:{}".format(clf.score(X_test, y_test)))
         # return clf.score(X_test, y_test)
         # return clf.score(X_test, y_test), mean_squared_error(clf.predict(X_test), y_test)
-        rmse = np.sqrt(mean_squared_error(clf.predict(X_test), y_test))
+        rmse = np.sqrt(mean_squared_error(list(clf.predict(X_test)), list(y_test)))
         print("rmse:{}".format(rmse))
 
-        return clf.score(X_test,y_test), rmse, regression_coefficient
+        return clf.score(X_test,y_test), rmse
 
 
-logistic()
+Logistic()
 
