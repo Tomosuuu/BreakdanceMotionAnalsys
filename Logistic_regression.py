@@ -20,31 +20,46 @@ class logistic():
         s = []
         r = []
         count = 10
-        for i in range(count):
-            score, rmse = self.logisticreg()
-            s.append(score)
-            r.append(rmse)
-        plt.figure(figsize=(20, 10), dpi=200)
-        plt.xlabel('count', fontsize=28)
-        plt.ylabel('score', fontsize=28)
-        plt.ylim(0.0,1.0)
-        plt.legend()
-        plt.plot(range(1,count+1), s, linewidth=4, color="orange")
-        plt.savefig("./Graph/" + "score" + ".png")
+        score, rmse, ke = self.logisticreg()
+        key = []
+        j = 0
+        for i in range(len(ke[0])):
+            key.append(ke[0][i])
+            if i % 24 == 0 and i != 0:
+                plt.figure(figsize=(20, 10), dpi=200)
+                plt.bar(range(len(key)),key)
+                plt.savefig("./Graph/" + str(j) + ".png")
+                j += 1
+                key = []
+        # for i in range(count):
+        #     score, rmse, ke = self.logisticreg()
+        #     s.append(score)
+        #     r.append(rmse)
+        #     print(len(ke[0]))
+        #     plt.figure(figsize=(20, 10), dpi=200)
+        #     plt.bar(range(len(ke[0])),ke[0])
+        #     plt.savefig("./Graph/" + str(i) + ".png")
+        # plt.figure(figsize=(20, 10), dpi=200)
+        # plt.xlabel('count', fontsize=28)
+        # plt.ylabel('score', fontsize=28)
+        # plt.ylim(0.0,1.0)
+        # plt.legend()
+        # plt.plot(range(1,count+1), s, linewidth=4, color="orange")
+        # plt.savefig("./Graph/" + "score" + ".png")
+        #
+        # plt.figure(figsize=(20, 10), dpi=200)
+        # plt.xlabel('count', fontsize=28)
+        # plt.ylabel('rmse', fontsize=28)
+        # plt.legend()
+        # plt.plot(range(1,count+1), r, linewidth=4, color="black")
+        # plt.savefig("./Graph/" + "rmse" + ".png")
 
-        plt.figure(figsize=(20, 10), dpi=200)
-        plt.xlabel('count', fontsize=28)
-        plt.ylabel('rmse', fontsize=28)
-        plt.legend()
-        plt.plot(range(1,count+1), r, linewidth=4, color="black")
-        plt.savefig("./Graph/" + "rmse" + ".png")
-
-        print("MAX:{}".format(max(s)))
-        print("MIN:{}".format(min(s)))
-        print("MEAN.{}".format(sum(s)/len(s)))
-        print("MAX:{}".format(max(r)))
-        print("MIN:{}".format(min(r)))
-        print("MEAN.{}".format(sum(r) / len(r)))
+        # print("MAX:{}".format(max(s)))
+        # print("MIN:{}".format(min(s)))
+        # print("MEAN.{}".format(sum(s)/len(s)))
+        # print("MAX:{}".format(max(r)))
+        # print("MIN:{}".format(min(r)))
+        # print("MEAN.{}".format(sum(r) / len(r)))
 
     def logisticreg(self):
         d = pd.read_csv("kinematic_dataset.csv", index_col=0)
@@ -83,7 +98,7 @@ class logistic():
         rmse = np.sqrt(mean_squared_error(clf.predict(X_test), y_test))
         print("rmse:{}".format(rmse))
 
-        return clf.score(X_test,y_test), rmse
+        return clf.score(X_test,y_test), rmse, regression_coefficient
 
 
 logistic()
