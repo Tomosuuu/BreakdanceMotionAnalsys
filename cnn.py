@@ -19,6 +19,8 @@ class CNN():
         # print(err_list)
         plt.figure(figsize=(20, 10), dpi=200)
         plt.hist(err_list)
+        plt.ylabel('Count')
+        plt.xlabel('RMSE')
         plt.savefig("./Graph/rmse.png")
 
     def cnn(self, num):
@@ -73,7 +75,7 @@ class CNN():
         plt.figure(figsize=(20, 10), dpi=200)
         plt.plot(history.history['accuracy'])
         plt.plot(history.history['val_accuracy'])
-        plt.title('Model accuracy')
+        # plt.title('Model accuracy')
         plt.ylabel('Accuracy')
         plt.xlabel('Epoch')
         plt.legend(['Train', 'Test'], loc='upper left')
@@ -84,7 +86,7 @@ class CNN():
         plt.figure(figsize=(20, 10), dpi=200)
         plt.plot(history.history['loss'])
         plt.plot(history.history['val_loss'])
-        plt.title('Model loss')
+        # plt.title('Model loss')
         plt.ylabel('Loss')
         plt.xlabel('Epoch')
         plt.legend(['Train', 'Test'], loc='upper left')
