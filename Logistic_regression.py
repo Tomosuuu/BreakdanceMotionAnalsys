@@ -32,10 +32,10 @@ class Logistic:
 
         plt.figure(figsize=(20, 10), dpi=200)
         plt.ylabel('count')
-        plt.xlabel('RMSE')
+        plt.xlabel('Root Mean Square Error')
         plt.legend()
         plt.hist(rmse_list)
-        plt.savefig("./Graph/" + "rmse" + ".png")
+        plt.savefig("./Graph/" + "logistic_rmse" + ".png")
         print(rmse_list)
         print(score_list)
 
