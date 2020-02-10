@@ -20,7 +20,7 @@ class CNN():
         plt.figure(figsize=(20, 10), dpi=200)
         plt.hist(err_list)
         plt.ylabel('Count')
-        plt.xlabel('RMSE')
+        plt.xlabel('Root Mean Square Error')
         plt.savefig("./Graph/rmse.png")
 
     def cnn(self, num):
