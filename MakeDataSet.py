@@ -1,6 +1,8 @@
 import copy
 import os
 import pandas as pd
+import glob
+import numpy as np
 
 
 # directory内のファイルをカウントする
@@ -10,7 +12,8 @@ def file_count(path):
 
 # 動作がスタートしているフレームを開始点とする
 def detect_start(dir_num):
-    start_frame = [215,150,75]
+    start = pd.read_csv("./Evaluate_Flare/start-start_frame.csv", usecols=["start"])
+    start_frame = start.T.values[0]
     return start_frame[dir_num]
 
 # 振り分ける
@@ -76,9 +79,13 @@ class DataSet:
                   'left_ear': []}
     PATH = "./coordinate_csv"
     TRANS_DATA_PATH = "./Trans_Coordinate_Data"
+    DATA_SIZE = []
+    MOVE_MEAN_DATA_PATH = "./Move_Mean_Data"
 
     def __init__(self):
         self.make_dataset()
+        self.data_counter()
+        self.move_mean()
 
     # csvデータを統括して読み込み
     def make_dataset(self):
@@ -98,6 +105,7 @@ class DataSet:
                     pose = pd.concat([pose, POSE])
             separate_data(pose, COPIED_KEY_POINTS)
             os.makedirs(self.TRANS_DATA_PATH + "/" + dir_count, exist_ok=True)
+            os.makedirs("./Original_coordinate/" + dir_count, exist_ok=True)
             self.linear_transformation(dir_count, COPIED_KEY_POINTS)
 
     # 線形変換する
@@ -108,10 +116,43 @@ class DataSet:
             key_points['x'] = key_points['x'].where(key_points['trust'] != 0.0)
             key_points['y'] = key_points['y'].where(key_points['trust'] != 0.0)
             if key_points.isnull().values.sum() != 0:
+                key_points.to_csv("./Original_coordinate/" + dir_count + "/" + str(key) + ".csv")
                 joint_in = key_points.interpolate()
                 joint_in.to_csv(self.TRANS_DATA_PATH + "/" + dir_count + "/" + str(key) + ".csv")
             else:
+                key_points.to_csv("./Original_coordinate/" + dir_count + "/" + str(key) + ".csv")
                 key_points.to_csv(self.TRANS_DATA_PATH + "/" + dir_count + "/" + str(key) + ".csv")
+
+    def data_counter(self):
+        count = file_count(self.TRANS_DATA_PATH)
+        for i in range(count):
+            path_list = glob.glob(self.TRANS_DATA_PATH + "/" + str(i).zfill(3) + "/*")
+            for j in path_list:
+                trans = pd.read_csv(j, usecols=["x","y"])
+                t = trans.values
+            self.DATA_SIZE.append(len(t))
+
+    def move_mean(self):
+        os.makedirs(self.MOVE_MEAN_DATA_PATH, exist_ok=True)
+        count = file_count(self.TRANS_DATA_PATH)
+        for i in range(count):
+            path_list = glob.glob(self.TRANS_DATA_PATH + "/" + str(i).zfill(3) + "/*")
+            os.makedirs(self.MOVE_MEAN_DATA_PATH + "/" + str(i).zfill(3), exist_ok=True)
+            for j in path_list:
+                move_means_data = pd.DataFrame()
+                trans = pd.read_csv(j, usecols=["x","y"])
+                t = trans.T.values
+                n = self.DATA_SIZE[i] - min(self.DATA_SIZE)
+                if n != 0:
+                    n += 1
+                    x = np.convolve(t[0], np.ones(n)/float(n), 'valid')
+                    y = np.convolve(t[1], np.ones(n)/float(n), 'valid')
+                    move_means_data['x'] = x
+                    move_means_data['y'] = y
+                else:
+                    move_means_data['x'] = t[0]
+                    move_means_data['y'] = t[1]
+                move_means_data.to_csv(self.MOVE_MEAN_DATA_PATH + j[len(self.TRANS_DATA_PATH):])
 
 
 DataSet()
