@@ -105,6 +105,7 @@ class DataSet:
                     pose = pd.concat([pose, POSE])
             separate_data(pose, COPIED_KEY_POINTS)
             os.makedirs(self.TRANS_DATA_PATH + "/" + dir_count, exist_ok=True)
+            os.makedirs("./Original_coordinate/" + dir_count, exist_ok=True)
             self.linear_transformation(dir_count, COPIED_KEY_POINTS)
 
     # 線形変換する
@@ -115,9 +116,11 @@ class DataSet:
             key_points['x'] = key_points['x'].where(key_points['trust'] != 0.0)
             key_points['y'] = key_points['y'].where(key_points['trust'] != 0.0)
             if key_points.isnull().values.sum() != 0:
+                key_points.to_csv("./Original_coordinate/" + dir_count + "/" + str(key) + ".csv")
                 joint_in = key_points.interpolate()
                 joint_in.to_csv(self.TRANS_DATA_PATH + "/" + dir_count + "/" + str(key) + ".csv")
             else:
+                key_points.to_csv("./Original_coordinate/" + dir_count + "/" + str(key) + ".csv")
                 key_points.to_csv(self.TRANS_DATA_PATH + "/" + dir_count + "/" + str(key) + ".csv")
 
     def data_counter(self):

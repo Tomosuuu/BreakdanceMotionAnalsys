@@ -1,26 +1,29 @@
 import keras
 import pandas as pd
 import numpy as np
+from matplotlib.ticker import MultipleLocator
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 
-plt.rcParams["font.size"] = 30
+plt.rcParams["font.size"] = 50
 
 class CNN():
     def __init__(self):
         err_list = []
-        for i in range(10):
+        for i in range(30):
             test, result = self.cnn(i)
             err = np.sqrt(mean_squared_error(test, result))
             err_list.append(err)
 
         # print(err_list)
         plt.figure(figsize=(20, 10), dpi=200)
-        plt.hist(err_list)
-        plt.ylabel('Count')
-        plt.xlabel('Root Mean Square Error')
+        plt.hist(err_list, ec="black", align="left")
+        ax = plt.gca()
+        ax.yaxis.set_major_locator(MultipleLocator(1))
+        # plt.ylabel('Count')
+        # plt.xlabel('Root Mean Square Error')
         plt.savefig("./Graph/rmse.png")
 
     def cnn(self, num):
@@ -72,24 +75,24 @@ class CNN():
         print(result)
 
         # Plot training & validation accuracy values
-        plt.figure(figsize=(20, 10), dpi=200)
-        plt.plot(history.history['accuracy'])
-        plt.plot(history.history['val_accuracy'])
+        plt.figure(figsize=(20, 12), dpi=200)
+        plt.plot(history.history['accuracy'], linewidth=5)
+        plt.plot(history.history['val_accuracy'], linewidth=5)
         # plt.title('Model accuracy')
-        plt.ylabel('Accuracy')
-        plt.xlabel('Epoch')
-        plt.legend(['Train', 'Test'], loc='upper left')
+        # plt.ylabel('Accuracy')
+        # plt.xlabel('Epoch')
+        # plt.legend(['Training', 'Test'], loc='upper left')
         plt.savefig("./Graph/accuracy(" + str(num) + ").png")
         # plt.show()
 
         # Plot training & validation loss values
-        plt.figure(figsize=(20, 10), dpi=200)
-        plt.plot(history.history['loss'])
-        plt.plot(history.history['val_loss'])
+        plt.figure(figsize=(20, 12), dpi=200)
+        plt.plot(history.history['loss'], linewidth=5)
+        plt.plot(history.history['val_loss'], linewidth=5)
         # plt.title('Model loss')
-        plt.ylabel('Loss')
-        plt.xlabel('Epoch')
-        plt.legend(['Train', 'Test'], loc='upper left')
+        # plt.ylabel('Loss')
+        # plt.xlabel('Epoch')
+        # plt.legend(['Training', 'Test'], loc='upper left')
         plt.savefig("./Graph/loss(" + str(num) + ").png")
         # plt.show()
 
